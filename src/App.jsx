@@ -2,7 +2,7 @@ import "./App.css";
 import TodayToDo from "./page/TodayToDo";
 import { useSelector } from "react-redux";
 import AppComponent from "./page/AppComponent";
-import {BrowserRouter,  Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Login from "./page/Login";
 import Layout from "./page/Layout";
 import AllToDo from "./page/AllToDo";
@@ -11,7 +11,8 @@ import PlannedToDo from "./page/PlannedToDo";
 
 function App() {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="todo" element={<Layout />}>
@@ -21,7 +22,7 @@ function App() {
           <Route path="planned" element={<PlannedToDo />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

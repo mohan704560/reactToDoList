@@ -1,7 +1,5 @@
 import "./App.css";
 import TodayToDo from "./page/TodayToDo";
-import { useSelector } from "react-redux";
-import AppComponent from "./page/AppComponent";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Login from "./page/Login";
 import Layout from "./page/Layout";

@@ -19,7 +19,7 @@ const TodayToDo = () => {
   return (
     <main className="flex-1 p-4">
       <p className="border-b-2 border-gray-300">
-        To Do <i class="ri-arrow-down-s-fill text-2xl"></i>
+        To Do <i className="ri-arrow-down-s-fill text-2xl"></i>
       </p>
 
       <TaskInput />

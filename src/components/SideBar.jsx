@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const SideBar = () => {
   return (
-    <div className="w-[20%] h-fit">
+    <div className="w-[80%] lg:w-[20%] h-fit fixed top-14 lg:top-0 left-0 lg:static z-100 bg-white">
       <div className="relative bg-[#EEF6EF] w-full h-full mt-24 pt-32 pb-4">
         <div className="flex items-center flex-col absolute -top-16 w-full">
           <img src={profileImage} alt="profileImage" className="w-32 h-32" />

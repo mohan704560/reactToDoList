@@ -46,7 +46,7 @@ const TaskList = ({ task }) => {
               }
             >
               {task.important ? (
-                <i class="ri-star-fill text-2xl"></i>
+                <i className="ri-star-fill text-2xl"></i>
               ) : (
                 <i className="ri-star-line text-2xl"></i>
               )}

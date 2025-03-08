@@ -11,7 +11,7 @@ const Layout = () => {
   console.log("showSidebar :>> ", showSidebar);
   return (
     <>
-      <div className=" flex flex-col ps-12 h-screen">
+      <div className="flex flex-col lg:ps-12 h-screen">
         {/* Header */}
         <Header />
 

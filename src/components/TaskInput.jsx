@@ -47,6 +47,12 @@ const TaskInput = () => {
         ref={taskRef}
         className="py-8 px-4 w-full text-base font-medium  mt-4 focus:outline-none capitalize"
         placeholder="Add A Task"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            addTaskHandler();
+          }
+        }}
       ></textarea>
       <div className="flex justify-between px-6 py-4">
         <div className="flex gap-8">

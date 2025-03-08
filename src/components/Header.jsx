@@ -20,16 +20,16 @@ const Header = () => {
 
       <div className="flex gap-6">
         <button>
-          <i class="ri-search-line text-2xl text-black"></i>
+          <i className="ri-search-line text-2xl text-black"></i>
         </button>
         <button>
-          <i class="ri-layout-grid-line text-2xl text-black"></i>
+          <i className="ri-layout-grid-line text-2xl text-black"></i>
         </button>
         <button>
           {mode === "light" ? (
-            <i class="ri-sun-line text-2xl text-black"></i>
+            <i className="ri-sun-line text-2xl text-black"></i>
           ) : (
-            <i class="ri-moon-clear-line text-2xl text-black"></i>
+            <i className="ri-moon-clear-line text-2xl text-black"></i>
           )}
         </button>
       </div>

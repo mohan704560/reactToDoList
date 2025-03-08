@@ -11,8 +11,7 @@ import PlannedToDo from "./page/PlannedToDo";
 
 function App() {
   return (
-    // <BrowserRouter>
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="todo" element={<Layout />}>
@@ -22,7 +21,7 @@ function App() {
           <Route path="planned" element={<PlannedToDo />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

@@ -10,6 +10,7 @@ const TaskInput = () => {
 
   const dispatch = useDispatch();
 
+  // function to add new task
   const addTaskHandler = () => {
     if (!taskRef.current.value) {
       alert("Task name is required");
@@ -17,6 +18,7 @@ const TaskInput = () => {
     }
     const todayDate = new Date().toISOString().split("T")[0];
 
+    // all data colleted fom the input
     const payload = {
       name:
         taskRef.current.value.charAt(0).toUpperCase() +
@@ -26,12 +28,9 @@ const TaskInput = () => {
         timeInputRef.current.value !== "" ? timeInputRef.current.value : null,
     };
 
-    console.log("payload :>> ", payload);
-
     dispatch(addTask(payload));
 
     if (repeatTask) {
-      console.log("repeat.current :>> ", repeatTask);
       dispatch(addTask(payload));
     }
 
@@ -41,6 +40,7 @@ const TaskInput = () => {
 
   return (
     <div className="bg-linear-to-b from-white to-[#D0FFD2] opacity-50">
+      {/* input to add new task  */}
       <textarea
         rows="2"
         cols="20"
@@ -56,10 +56,20 @@ const TaskInput = () => {
       ></textarea>
       <div className="flex justify-between px-6 py-4">
         <div className="flex gap-8">
-          <button onClick={() => timeInputRef.current.showPicker()}>
+          {/* button to add reminder  */}
+          <button
+            className="relative"
+            onClick={() => timeInputRef.current.showPicker()}
+          >
             <i className="ri-notification-line text-2xl text-[#357937]"></i>
+            <input
+              type="time"
+              ref={timeInputRef}
+              className="absolute inset-0 opacity-0 cursor-pointer"
+            />
           </button>
-          <input type="time" ref={timeInputRef} className="hidden" />
+
+          {/* button to add repeat to the task  */}
           <button
             onClick={() => setRepeatTask(!repeatTask)}
             className="text-center w-12 h-12"
@@ -74,11 +84,18 @@ const TaskInput = () => {
           >
             <i className="ri-repeat-2-line text-2xl text-[#357937]"></i>
           </button>
-          <button onClick={() => dateInputRef.current.showPicker()}>
+          {/* button to add date to the task  */}
+          <button className="relative" onClick={() => dateInputRef.current.showPicker()}>
             <i className="ri-calendar-line text-2xl text-[#357937]"></i>
+            <input
+              type="date"
+              ref={dateInputRef}
+              className="absolute inset-0 opacity-0 cursor-pointer"
+            />
           </button>
-          <input type="date" ref={dateInputRef} className="hidden" />
         </div>
+
+        {/* button to submit the input task to save in database  */}
         <button
           type="button"
           onClick={addTaskHandler}

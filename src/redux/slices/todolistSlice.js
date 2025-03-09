@@ -9,8 +9,12 @@ import { createSlice } from "@reduxjs/toolkit";
 //   reminder: null,
 // }
 
+
+// initialise empty todolist
 const initialList = [];
 
+
+// add slice method for the todo.
 export const todolistSlice = createSlice({
   name: "todolist",
   initialState: initialList,

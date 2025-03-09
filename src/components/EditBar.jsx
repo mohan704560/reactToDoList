@@ -10,9 +10,11 @@ import {
 import axios from "axios";
 
 const EditBar = () => {
+  // get the taskID from the editItem
   const taskId = useSelector((state) => state.configuration.editItem);
   const [weather, setWeather] = useState("");
-  console.log("taskId", taskId);
+
+  // get the perticular task using task id
   let task = useSelector((state) =>
     state.todolist.filter((task) => task.id === taskId)
   )[0];
@@ -24,6 +26,7 @@ const EditBar = () => {
 
   const APIKey = import.meta.env.VITE_API_URL;
 
+  // function to fetch weather data from the weatherAPI
   const fetchWeather = async () => {
     try {
       const response = await axios.get(
@@ -31,7 +34,6 @@ const EditBar = () => {
           import.meta.env.VITE_API_KEY
         }&q=mumbai&aqi=no`
       );
-      console.log("response.data", response.data);
       setWeather(response.data);
     } catch (error) {
       console.error("Error fetching weather data:", error);
@@ -47,10 +49,12 @@ const EditBar = () => {
       className="w-[80%] lg:w-[30%] bg-[#EEF6EF] fixed lg:relative h-full top-14 lg:top-0 right-0"
       style={taskId ? { display: "block" } : { display: "none" }}
     >
+      {/* to show task details  */}
       {task && (
         <div className="ps-12">
           <div className="py-6 flex gap-4 justify-between mt-16 border-y-2 border-gray-300">
             <div className="flex items-center">
+              {/* to show task completed or not  */}
               <div
                 className="w-4 h-4 me-4 appearance-none border rounded-xs"
                 onClick={() => taskCompletedHandler(task.id)}
@@ -59,9 +63,8 @@ const EditBar = () => {
               </div>
               <span>{task.name}</span>
             </div>
-            {/* <p>
-              <i className="ri-star-line text-xl me-8"></i>
-            </p> */}
+
+            {/* to show task is important or not  */}
             <button
               onClick={() =>
                 dispatch(
@@ -76,18 +79,23 @@ const EditBar = () => {
               )}
             </button>
           </div>
+
+          {/* add step to the task  */}
           <div className="py-4 flex border-b-2 border-gray-300">
             <i className="ri-add-line me-4 text-2xl"></i>
             <span>Add Step</span>
           </div>
+          {/* add reminder to the task  */}
           <div className="py-4 flex border-b-2 border-gray-300">
             <i className="ri-notification-line me-4 text-xl"></i>
             <span>Set Reminder</span>
           </div>
+          {/* add due date to the task  */}
           <div className="py-4 flex border-b-2 border-gray-300">
             <i className="ri-calendar-line me-4 text-xl"></i>
             <span>Add Due Date</span>
           </div>
+          {/* add repeat to the task  */}
           <div className="py-4 flex border-b-2 border-gray-300">
             <i className="ri-repeat-2-line me-4 text-xl"></i>
             <span>Repeat</span>
@@ -95,6 +103,7 @@ const EditBar = () => {
         </div>
       )}
 
+      {/* display weather data receive from the API  */}
       {weather && (
         <div className="mt-4 ps-12 text-center">
           <img
@@ -115,11 +124,14 @@ const EditBar = () => {
 
       <div className="block mt-16 border-t-2 border-gray-300 absolute bottom-0 w-full">
         <div className="py-6 px-4 flex gap-4 justify-between ">
+          {/* to close the edit bar */}
           <button onClick={() => dispatch(removeItem())}>
             <i className="ri-close-line me-4 text-3xl"></i>
           </button>
 
           <span className="text-gray-500">Created Today</span>
+
+          {/* to delete the task  */}
           <button
             onClick={() => {
               dispatch(deleteTask(task.id)), dispatch(removeItem());

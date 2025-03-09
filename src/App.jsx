@@ -9,6 +9,7 @@ import PlannedToDo from "./page/PlannedToDo";
 
 function App() {
   return (
+    // .....................................Routing of the website ..................................
     <BrowserRouter>
       <Routes>
         <Route path="login" element={<Login />} />

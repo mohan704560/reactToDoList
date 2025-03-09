@@ -3,12 +3,13 @@ import TaskList from "../components/TaskList";
 import { useSelector } from "react-redux";
 
 const ImportantToDo = () => {
+  // to get all important task
   const taskList = useSelector((state) =>
     state.todolist.filter((task) => task.important === true)
   );
-  console.log("taskList", taskList);
   const dateTaskArray = getDateTask(taskList);
 
+  // function to get all task date wise
   function getDateTask(tasks) {
     const dateArray = tasks.reduce((acc, task) => {
       if (!acc.includes(task.date)) {
@@ -32,6 +33,7 @@ const ImportantToDo = () => {
         Important Task <i className="ri-arrow-down-s-fill text-2xl"></i>
       </p>
 
+      {/* render all important task datewise */}
       {dateTaskArray.map((dateTask, index) => {
         return (
           <div className="mt-8" key={index}>

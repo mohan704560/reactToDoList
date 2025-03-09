@@ -4,9 +4,11 @@ import TaskInput from "../components/TaskInput";
 import { useSelector } from "react-redux";
 
 const AllToDo = () => {
+  // get all tasks
   const taskList = useSelector((state) => state.todolist);
   const dateTaskArray = getDateTask(taskList);
 
+  // function to group task datewise so that we can render it on dom date wise.
   function getDateTask(tasks) {
     const dateArray = tasks.reduce((acc, task) => {
       if (!acc.includes(task.date)) {
@@ -29,8 +31,11 @@ const AllToDo = () => {
       <p className="border-b-2 border-gray-300">
         All Task <i className="ri-arrow-down-s-fill text-2xl"></i>
       </p>
+
+      {/* to input the task */}
       <TaskInput />
 
+      {/* render all task datewise */}
       {dateTaskArray.map((dateTask) => {
         return (
           <div className="mt-8">

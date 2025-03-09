@@ -8,30 +8,20 @@ import { useSelector } from "react-redux";
 
 const Layout = () => {
   const showSidebar = useSelector((state) => state.configuration.sideBar);
-  console.log("showSidebar :>> ", showSidebar);
   return (
     <>
-      <div className="flex flex-col lg:ps-12 h-screen">
+      <div className="flex flex-col lg:ps-12 h-screen dark:bg-[#242424]">
         {/* Header */}
         <Header />
 
-        {/* Main Content */}
         <div className="flex flex-1 h-full">
-          {/* Left Sidebar */}
-          {/* {showLeftSidebar && (
-          <aside className="w-64 bg-gray-200 p-4 h-full">Left Sidebar</aside>
-        )} */}
+          {/* to show side bar */}
           {showSidebar && <SideBar />}
 
-          {/* Body Section */}
+          {/* Main Content */}
           <Outlet />
 
           <EditBar />
-
-          {/* Right Sidebar */}
-          {/* {showRightSidebar && (
-          <aside className="w-64 bg-gray-200 p-4 h-full">Right Sidebar</aside>
-        )} */}
         </div>
       </div>
     </>
